@@ -2,7 +2,19 @@
 
 Get the Kauai Travel Helper app running in 3 simple steps!
 
-## Step 1: Start the Backend
+## 🚀 Quick Method: Start Both Servers at Once
+
+From the project root, run:
+
+```bash
+npm run dev
+```
+
+This will start both the backend and frontend servers simultaneously with colored output!
+
+## Alternative: Start Servers Separately
+
+### Step 1: Start the Backend
 
 Open a terminal and run:
 
@@ -20,7 +32,7 @@ You should see:
 
 Leave this terminal running.
 
-## Step 2: Start the Frontend
+### Step 2: Start the Frontend
 
 Open a **NEW** terminal and run:
 
@@ -36,7 +48,7 @@ You should see:
   ➜  Local:   http://localhost:5173/
 ```
 
-## Step 3: Open the App
+### Step 3: Open the App
 
 Open your browser and go to: **http://localhost:5173**
 

@@ -134,7 +134,19 @@ PORT=3000
 
 ## Running the Application
 
-### Start Backend Server
+### 🚀 Quick Start: Run Both Servers
+
+From the project root directory:
+
+```bash
+npm run dev
+```
+
+This will start both the backend and frontend servers simultaneously with colored output!
+
+### Alternative: Start Servers Separately
+
+**Start Backend Server:**
 
 ```bash
 cd backend
@@ -148,7 +160,7 @@ For development with auto-reload:
 npm run dev
 ```
 
-### Start Frontend Development Server
+**Start Frontend Development Server:**
 
 Open a new terminal:
 
