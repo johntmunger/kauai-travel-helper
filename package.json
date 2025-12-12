@@ -1,0 +1,14 @@
+{
+  "name": "kauai-trip-2025",
+  "version": "1.0.0",
+  "description": "Kauai Travel Helper - Vue 3 + Express + SQLite",
+  "scripts": {
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["kauai", "travel", "vue", "express"],
+  "author": "",
+  "license": "MIT"
+}
+
