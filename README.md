@@ -1,6 +1,10 @@
 # Kauai Travel Helper
 
+**v1.0.0-MVP** 🌺
+
 A beautiful single-page application built with Vue 3 and Node.js/Express to help you discover amazing activities across the four regions of Kauai, Hawaii.
+
+> **MVP Status:** This release includes all core features and is ready for personal use and feedback gathering.
 
 ## Features
 
@@ -14,6 +18,7 @@ A beautiful single-page application built with Vue 3 and Node.js/Express to help
 ## Tech Stack
 
 ### Frontend
+
 - **Vue 3** with Composition API
 - **Vue Router** for navigation
 - **Tailwind CSS** for styling
@@ -21,6 +26,7 @@ A beautiful single-page application built with Vue 3 and Node.js/Express to help
 - **Vite** for fast development
 
 ### Backend
+
 - **Node.js** with Express
 - **SQLite** for data persistence
 - **Google Places API** for live activity data
@@ -156,6 +162,7 @@ npm start
 The backend will start on `http://localhost:3000`
 
 For development with auto-reload:
+
 ```bash
 npm run dev
 ```
@@ -190,6 +197,7 @@ Open your browser and navigate to: **http://localhost:5173**
 The app comes with 20 curated activities across all four regions:
 
 ### South Shore
+
 - Beach House Restaurant
 - Lawai Beach
 - Poipu Beach Park
@@ -197,6 +205,7 @@ The app comes with 20 curated activities across all four regions:
 - Spouting Horn
 
 ### North Shore
+
 - Hanalei Bay
 - Hideaways Beach
 - Bar Acuda
@@ -204,6 +213,7 @@ The app comes with 20 curated activities across all four regions:
 - Tahiti Nui
 
 ### East Side
+
 - Wailua Falls
 - Opaekaa Falls
 - Sleeping Giant Trail
@@ -211,6 +221,7 @@ The app comes with 20 curated activities across all four regions:
 - Lydgate Beach Park
 
 ### West Side
+
 - Waimea Canyon
 - Polihale Beach
 - Salt Pond Beach Park
@@ -259,30 +270,44 @@ npm run build
 
 The built files will be in `frontend/dist/`
 
-### Deployment Options
+### Deployment
 
-1. **Frontend**: Deploy to Netlify, Vercel, or any static hosting
-2. **Backend**: Deploy to Heroku, Railway, or any Node.js hosting
-3. **Full Stack**: Deploy both to a VPS with nginx
+**Recommended:** Deploy to Render.com (easiest for this app!)  
+See **[DEPLOY_TO_RENDER.md](DEPLOY_TO_RENDER.md)** for step-by-step Render.com guide.
+
+**All Options:**
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** for comprehensive deployment guide.
+
+**Quick Deployment Options:**
+
+1. ⭐ **Render.com** - Both frontend + backend (recommended, free tier, ~10 min)
+2. **Vercel + Railway** - Split deployment (free tier, ~15 min)
+3. **VPS with Nginx** - Full control (requires server management)
+
+**MVP Deployment Status:** Ready for production! All core features tested and stable.
 
 ## Troubleshooting
 
 ### Backend won't start
+
 - Check if port 3000 is already in use
 - Verify all dependencies are installed: `npm install`
 - Check the SQLite database was created in `backend/database/kauai.db`
 
 ### Frontend API calls fail
+
 - Ensure backend is running on `http://localhost:3000`
 - Check browser console for CORS errors
 - Verify the API URL in `frontend/src/services/api.js`
 
 ### API features not working
+
 - Verify API keys are set in `backend/.env`
 - Check API key permissions in Google Cloud Console
 - Verify you haven't exceeded API rate limits
 
 ### Database issues
+
 - Delete `backend/database/kauai.db` and restart backend to recreate
 - Check file permissions on the database folder
 
@@ -297,4 +322,3 @@ For issues or questions, please check the troubleshooting section above or revie
 ---
 
 **Enjoy exploring Kauai! 🌺**
-

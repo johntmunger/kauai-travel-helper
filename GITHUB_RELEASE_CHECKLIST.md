@@ -1,10 +1,11 @@
-# GitHub Release Checklist for v1.0.0
+# GitHub Release Checklist for v1.0.0-MVP
 
-Use this checklist when publishing to GitHub today.
+Use this checklist when publishing the MVP to GitHub today.
 
 ## ✅ Pre-Release Checklist
 
 ### Code Quality
+
 - [x] All features working and tested
 - [x] Frontend builds without errors
 - [x] Backend starts without errors
@@ -13,6 +14,7 @@ Use this checklist when publishing to GitHub today.
 - [x] Tailwind CSS v3 configured correctly
 
 ### Documentation
+
 - [x] README.md complete
 - [x] QUICKSTART.md created
 - [x] PROJECT_SUMMARY.md created
@@ -23,6 +25,7 @@ Use this checklist when publishing to GitHub today.
 - [x] .gitignore configured
 
 ### GitHub Setup
+
 - [x] Issue templates created
   - [x] Bug report template
   - [x] Feature request template
@@ -32,13 +35,15 @@ Use this checklist when publishing to GitHub today.
 - [ ] Repository social preview image (optional)
 
 ### Version Control
-- [x] package.json versions set to 1.0.0
+
+- [x] package.json versions set to 1.0.0-mvp
 - [x] All changes committed
-- [ ] Git tags created
+- [ ] Git tags created (v1.0.0-mvp)
 
 ## 📦 Files to Commit
 
 ### Root Directory
+
 ```
 ✅ README.md
 ✅ QUICKSTART.md
@@ -52,6 +57,7 @@ Use this checklist when publishing to GitHub today.
 ```
 
 ### Backend Files
+
 ```
 ✅ backend/package.json
 ✅ backend/server.js
@@ -66,6 +72,7 @@ Use this checklist when publishing to GitHub today.
 ```
 
 ### Frontend Files
+
 ```
 ✅ frontend/package.json
 ✅ frontend/src/main.js
@@ -84,6 +91,7 @@ Use this checklist when publishing to GitHub today.
 ```
 
 ### GitHub Templates
+
 ```
 ✅ .github/ISSUE_TEMPLATE/bug_report.md
 ✅ .github/ISSUE_TEMPLATE/feature_request.md
@@ -121,33 +129,36 @@ git push -u origin main
 ### 4. Create Git Tag
 
 ```bash
-git tag -a v1.0.0 -m "Release version 1.0.0"
-git push origin v1.0.0
+git tag -a v1.0.0-mvp -m "MVP Release version 1.0.0-mvp"
+git push origin v1.0.0-mvp
 ```
 
 ### 5. Create GitHub Release
 
 1. Go to repository on GitHub
 2. Click "Releases" → "Create a new release"
-3. Choose tag: v1.0.0
-4. Release title: "🌺 Kauai Travel Helper v1.0.0"
+3. Choose tag: v1.0.0-mvp
+4. Release title: "🌺 Kauai Travel Helper v1.0.0-MVP"
 5. Copy content from `RELEASE_NOTES_v1.0.0.md`
-6. Check "Set as the latest release"
+6. Check "Set as a pre-release" (since it's MVP)
 7. Click "Publish release"
 
 ### 6. Configure Repository Settings
 
 **Description:**
+
 ```
 🌺 Discover amazing activities across Kauai, Hawaii - A Vue 3 + Express travel app with smart API integration
 ```
 
 **Website:**
+
 ```
 https://github.com/YOUR-USERNAME/REPO-NAME#readme
 ```
 
 **Topics (Add these tags):**
+
 - vue3
 - vuejs
 - express
@@ -164,6 +175,7 @@ https://github.com/YOUR-USERNAME/REPO-NAME#readme
 - nodejs
 
 **Features to Enable:**
+
 - [x] Issues
 - [x] Projects (optional)
 - [x] Wikis (optional)
@@ -173,11 +185,13 @@ https://github.com/YOUR-USERNAME/REPO-NAME#readme
 ## 📝 Post-Release Tasks
 
 ### Immediate
+
 - [ ] Share release announcement
 - [ ] Update any external documentation
 - [ ] Monitor for issues
 
 ### Optional
+
 - [ ] Add screenshots to repository
 - [ ] Create demo video
 - [ ] Set up GitHub Pages (if needed)
@@ -208,6 +222,7 @@ Add these to the top of README.md:
 ## 📊 Analytics (Optional)
 
 Consider adding:
+
 - GitHub Stars tracking
 - Download statistics
 - Usage analytics (if deployed)
@@ -221,6 +236,7 @@ A beautiful Vue 3 app for discovering activities across Kauai's four regions:
 🏖️ South Shore | 🌊 North Shore | 🌴 East Side | 🏔️ West Side
 
 ✨ Features:
+
 - 20 pre-loaded activities
 - Smart API integration (Google Places + Yelp)
 - Beautiful Tailwind CSS UI
@@ -252,11 +268,13 @@ Before clicking "Publish":
 Once this checklist is complete, you're ready to share your project with the world!
 
 **Repository URL Template:**
+
 ```
 https://github.com/YOUR-USERNAME/kauai-travel-helper
 ```
 
 **Clone Command:**
+
 ```bash
 git clone https://github.com/YOUR-USERNAME/kauai-travel-helper.git
 ```
@@ -264,4 +282,3 @@ git clone https://github.com/YOUR-USERNAME/kauai-travel-helper.git
 ---
 
 **Good luck with your release! Mahalo! 🌺🏝️**
-

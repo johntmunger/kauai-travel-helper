@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { initializeDatabase } from './services/database.js';
-import regionsRouter from './routes/regions.js';
-import activitiesRouter from './routes/activities.js';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { initializeDatabase } from "./services/database.js";
+import regionsRouter from "./routes/regions.js";
+import activitiesRouter from "./routes/activities.js";
 
 dotenv.config();
 
@@ -21,29 +21,30 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.get('/api', (req, res) => {
+app.get("/api", (req, res) => {
   res.json({
     success: true,
-    message: 'Kauai Travel Helper API',
-    version: '1.0.0',
+    message: "Kauai Travel Helper API",
+    version: "1.0.0-mvp",
+    status: "MVP Release",
     endpoints: {
-      regions: '/api/regions',
-      regionActivities: '/api/regions/:region/activities',
-      activityDetails: '/api/activities/:id',
-      activityLiveStatus: '/api/activities/:id/live-status',
+      regions: "/api/regions",
+      regionActivities: "/api/regions/:region/activities",
+      activityDetails: "/api/activities/:id",
+      activityLiveStatus: "/api/activities/:id/live-status",
     },
   });
 });
 
-app.use('/api/regions', regionsRouter);
-app.use('/api/activities', activitiesRouter);
+app.use("/api/regions", regionsRouter);
+app.use("/api/activities", activitiesRouter);
 
 // Error handling
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
+  console.error("Error:", err);
   res.status(500).json({
     success: false,
-    error: 'Internal server error',
+    error: "Internal server error",
   });
 });
 
@@ -51,7 +52,7 @@ app.use((err, req, res, next) => {
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    error: 'Endpoint not found',
+    error: "Endpoint not found",
   });
 });
 
@@ -59,17 +60,16 @@ app.use((req, res) => {
 async function startServer() {
   try {
     await initializeDatabase();
-    console.log('✓ Database initialized');
+    console.log("✓ Database initialized");
 
     app.listen(PORT, () => {
       console.log(`✓ Server running on http://localhost:${PORT}`);
       console.log(`✓ API available at http://localhost:${PORT}/api`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error);
+    console.error("Failed to start server:", error);
     process.exit(1);
   }
 }
 
 startServer();
-

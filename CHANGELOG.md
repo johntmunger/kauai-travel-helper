@@ -5,11 +5,11 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-12-12
+## [1.0.0-mvp] - 2025-12-12
 
-### 🎉 Initial Release
+### 🎉 MVP Release
 
-First public release of the Kauai Travel Helper - a beautiful single-page application for discovering activities across the four regions of Kauai, Hawaii.
+First MVP (Minimum Viable Product) release of the Kauai Travel Helper - a beautiful single-page application for discovering activities across the four regions of Kauai, Hawaii. This release includes all core functionality with room for future enhancements.
 
 ### ✨ Features
 

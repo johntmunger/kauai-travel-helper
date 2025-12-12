@@ -92,24 +92,12 @@ const getRegionClasses = (regionValue) => {
   const isActive =
     currentRegion && currentRegion.toLowerCase() === regionValue.toLowerCase();
 
-  const colorMap = {
-    North: "hover:bg-blue-50 hover:text-blue-700",
-    East: "hover:bg-green-50 hover:text-green-700",
-    South: "hover:bg-orange-50 hover:text-orange-700",
-    West: "hover:bg-amber-50 hover:text-amber-700",
-  };
-
-  const activeColorMap = {
-    North: "bg-blue-500 text-white hover:bg-blue-600",
-    East: "bg-green-500 text-white hover:bg-green-600",
-    South: "bg-orange-500 text-white hover:bg-orange-600",
-    West: "bg-amber-500 text-white hover:bg-amber-600",
-  };
-
+  // Active state - blue for all regions
   if (isActive) {
-    return activeColorMap[regionValue];
+    return "bg-blue-500 text-white hover:bg-blue-600";
   }
 
-  return `text-gray-700 ${colorMap[regionValue]}`;
+  // Hover state - blue for all regions
+  return "text-gray-700 hover:bg-blue-50 hover:text-blue-700";
 };
 </script>
