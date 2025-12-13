@@ -2,9 +2,16 @@
 
 **v1.0.0** 🌺
 
-A beautiful single-page application built with Vue 3 and Node.js/Express to help you discover amazing activities across the four regions of Kauai, Hawaii.
+A modern single-page application built with Vue 3 and Node.js/Express to help you discover amazing activities across the four regions of Kauai, Hawaii.
 
 > **Stable Release:** Production-ready with 37 curated activities, multi-category support, and automatic data caching.
+
+## 🌐 Live Demo
+
+**Frontend:** [https://kauai-travel-helper.onrender.com](https://kauai-travel-helper.onrender.com)  
+**API:** [https://kauai-backend.onrender.com/api](https://kauai-backend.onrender.com/api)
+
+> **Note:** Replace with your actual Render.com URLs after deployment
 
 ## Features
 
