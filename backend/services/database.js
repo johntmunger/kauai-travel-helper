@@ -46,8 +46,30 @@ export function initializeDatabase() {
               resolve();
             });
           } else {
-            console.log('Database already seeded');
-            resolve();
+            // Check if categories are linked
+            db.get('SELECT COUNT(*) as count FROM activity_categories', (err, linkRow) => {
+              if (err) {
+                reject(err);
+                return;
+              }
+              
+              // If activities exist but no category links, reseed
+              if (linkRow.count === 0) {
+                const seed = readFileSync(seedPath, 'utf8');
+                db.exec(seed, (err) => {
+                  if (err) {
+                    console.error('Error re-seeding categories:', err);
+                    reject(err);
+                    return;
+                  }
+                  console.log('Database categories re-linked successfully');
+                  resolve();
+                });
+              } else {
+                console.log('Database already seeded');
+                resolve();
+              }
+            });
           }
         });
       });
