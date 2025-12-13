@@ -58,6 +58,7 @@ UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hide
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Bar Acuda' AND c.name = 'Restaurant'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Napali Coast Boat Tour' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Tahiti Nui' AND c.name = 'Nightlife'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Tahiti Nui' AND c.name = 'Restaurant'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Queens Bath Trailhead' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Tiki Iniki' AND c.name = 'Restaurant'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Dolphin Restaurant' AND c.name = 'Restaurant'
