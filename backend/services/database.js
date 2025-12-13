@@ -65,27 +65,54 @@ export function getAllRegions() {
   });
 }
 
-// Get activities by region
+// Get activities by region with their categories
 export function getActivitiesByRegion(region) {
   return new Promise((resolve, reject) => {
     db.all(
-      'SELECT * FROM activities WHERE region = ? ORDER BY category, name',
+      `SELECT a.*, GROUP_CONCAT(c.name) as categories
+       FROM activities a
+       LEFT JOIN activity_categories ac ON a.id = ac.activity_id
+       LEFT JOIN categories c ON ac.category_id = c.id
+       WHERE a.region = ?
+       GROUP BY a.id
+       ORDER BY a.name`,
       [region],
       (err, rows) => {
         if (err) reject(err);
-        else resolve(rows);
+        else {
+          // Convert comma-separated categories to array
+          const activities = rows.map(row => ({
+            ...row,
+            categories: row.categories ? row.categories.split(',') : [],
+          }));
+          resolve(activities);
+        }
       }
     );
   });
 }
 
-// Get activity by ID
+// Get activity by ID with categories
 export function getActivityById(id) {
   return new Promise((resolve, reject) => {
-    db.get('SELECT * FROM activities WHERE id = ?', [id], (err, row) => {
-      if (err) reject(err);
-      else resolve(row);
-    });
+    db.get(
+      `SELECT a.*, GROUP_CONCAT(c.name) as categories
+       FROM activities a
+       LEFT JOIN activity_categories ac ON a.id = ac.activity_id
+       LEFT JOIN categories c ON ac.category_id = c.id
+       WHERE a.id = ?
+       GROUP BY a.id`,
+      [id],
+      (err, row) => {
+        if (err) reject(err);
+        else {
+          if (row) {
+            row.categories = row.categories ? row.categories.split(',') : [];
+          }
+          resolve(row);
+        }
+      }
+    );
   });
 }
 

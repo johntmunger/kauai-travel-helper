@@ -18,13 +18,17 @@
 
       <!-- Content -->
       <div class="flex-1 p-5">
-        <!-- Category Badge -->
-        <span
-          class="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-2"
-          :class="getCategoryClasses(activity.category)"
-        >
-          {{ activity.category }}
-        </span>
+        <!-- Category Badges -->
+        <div class="flex flex-wrap gap-2 mb-2">
+          <span
+            v-for="category in activity.categories"
+            :key="category"
+            class="inline-block px-3 py-1 text-xs font-semibold rounded-full"
+            :class="getCategoryClasses(category)"
+          >
+            {{ category }}
+          </span>
+        </div>
 
         <!-- Name -->
         <h3

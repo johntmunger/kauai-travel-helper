@@ -62,12 +62,17 @@
           <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex items-start justify-between mb-4">
               <div>
-                <span
-                  class="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-2"
-                  :class="getCategoryClasses(activity.category)"
-                >
-                  {{ activity.category }}
-                </span>
+                <!-- Category Badges -->
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span
+                    v-for="category in activity.categories"
+                    :key="category"
+                    class="inline-block px-3 py-1 text-xs font-semibold rounded-full"
+                    :class="getCategoryClasses(category)"
+                  >
+                    {{ category }}
+                  </span>
+                </div>
                 <h1 class="text-3xl font-bold text-gray-900">
                   {{ activity.name }}
                 </h1>

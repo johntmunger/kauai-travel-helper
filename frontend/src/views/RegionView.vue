@@ -97,19 +97,23 @@ const regionTitle = computed(() => {
 });
 
 const categories = computed(() => {
-  const uniqueCategories = [
-    ...new Set(activities.value.map((a) => a.category)),
-  ];
+  // Flatten all categories from all activities
+  const allCategories = activities.value.flatMap((a) => a.categories || []);
+  const uniqueCategories = [...new Set(allCategories)];
   return uniqueCategories.sort();
 });
 
 const filteredActivities = computed(() => {
   if (!selectedCategory.value) return activities.value;
-  return activities.value.filter((a) => a.category === selectedCategory.value);
+  return activities.value.filter((a) => 
+    a.categories && a.categories.includes(selectedCategory.value)
+  );
 });
 
 const getCountByCategory = (category) => {
-  return activities.value.filter((a) => a.category === category).length;
+  return activities.value.filter((a) => 
+    a.categories && a.categories.includes(category)
+  ).length;
 };
 
 const fetchActivities = async () => {
