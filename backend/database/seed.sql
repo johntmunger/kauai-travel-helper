@@ -31,6 +31,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('Mark''s Place', '1610 Haleukana Street, Lihue, HI 96766', 'East', 'Local favorite serving generous portions of American comfort food and Hawaiian plate lunches. Affordable prices and authentic local atmosphere beloved by residents.', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400', 21.9812, -159.3720),
 ('Lawaia Fish Company', '3082 Peleke St, Ste 101, Lihue, HI 96766', 'East', 'Fresh fish market and deli serving poke, sushi, and seafood plates. Known for quality local catch and authentic Hawaiian-style preparations.', 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400', 21.9742, -159.3556),
 ('The Fish Express', '3-3343 Kuhio Highway #7, Lihue, HI', 'East', 'Popular local fish market offering fresh poke, sushi rolls, and fish plates. Great selection of daily catch with island-style preparations at affordable prices.', 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400', 21.9742, -159.3556),
+('The Kauai Community Market', '3-1901 Kaumualii Hwy, Lihue, HI 96766', 'East', 'Vibrant Saturday farmers market featuring local produce, crafts, food vendors, and live music. Experience authentic island culture and support local farmers and artisans.', 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400', 21.9742, -159.3556),
 
 -- West Region Activities
 ('Waimea Canyon', 'Waimea Canyon Dr, Waimea, HI 96796', 'West', 'The "Grand Canyon of the Pacific" - stunning 3,000-foot deep canyon with red and green cliffs. Multiple lookout points along scenic drive.', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', 22.0818, -159.6579),
@@ -80,4 +81,5 @@ UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Poli
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Salt Pond Beach Park' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Waimea Brewing Company' AND c.name = 'Restaurant'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hanapepe Town Friday Night Art Walk' AND c.name = 'Nightlife'
-UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Japanese Grandma''s Cafe' AND c.name = 'Restaurant';
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Japanese Grandma''s Cafe' AND c.name = 'Restaurant'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Kauai Community Market' AND c.name = 'Outdoor';
