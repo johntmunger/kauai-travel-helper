@@ -47,12 +47,61 @@ router.get('/:id', async (req, res) => {
       });
     }
 
-    // Cache is stale or doesn't exist, fetch fresh data
+    // Cache is stale or doesn't exist, automatically fetch fresh data
+    let details = null;
+    let nearbyActivities = [];
+
+    // Try Google Places first
+    let placeId = activity.google_place_id;
+    if (!placeId) {
+      placeId = await searchPlace(activity.name, activity.address);
+    }
+
+    if (placeId) {
+      const googleDetails = await getPlaceDetails(placeId);
+      if (googleDetails) {
+        details = googleDetails;
+        
+        // Get nearby places
+        if (activity.latitude && activity.longitude) {
+          nearbyActivities = await findNearbyPlaces(activity.latitude, activity.longitude);
+        }
+      }
+    }
+
+    // Fallback to Yelp if Google Places failed
+    if (!details) {
+      let yelpId = activity.yelp_business_id;
+      if (!yelpId) {
+        yelpId = await searchBusiness(activity.name, activity.address);
+      }
+
+      if (yelpId) {
+        const yelpDetails = await getBusinessDetails(yelpId);
+        if (yelpDetails) {
+          details = yelpDetails;
+        }
+      }
+    }
+
+    // Cache the results if we got any
+    if (details) {
+      await cacheActivityDetails(id, {
+        hours_json: JSON.stringify(details.hours),
+        rating: details.rating,
+        review_count: details.review_count,
+        is_open: details.is_open ? 1 : 0,
+        nearby_activities_json: JSON.stringify(nearbyActivities),
+      });
+    }
+
+    // Return with fresh data
     res.json({
       success: true,
       data: {
         ...activity,
-        details: null,
+        details: details || null,
+        nearby_activities: nearbyActivities,
         cached: false,
       },
     });
