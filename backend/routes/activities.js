@@ -100,8 +100,10 @@ router.get('/:id', async (req, res) => {
       success: true,
       data: {
         ...activity,
-        details: details || null,
-        nearby_activities: nearbyActivities,
+        details: details ? {
+          ...details,
+          nearby_activities: nearbyActivities,
+        } : null,
         cached: false,
       },
     });
