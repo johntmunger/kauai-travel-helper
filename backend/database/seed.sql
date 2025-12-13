@@ -9,6 +9,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('Porky''s Kauai', '5460 Koloa Rd, Koloa, Kauai, HI 96756', 'South', 'Award-winning BBQ and smoked meats in the heart of old Koloa town. Texas-style barbecue with island flair, casual outdoor seating.', 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=400', 21.9066, -159.4694),
 ('La Spezia', '5492 Koloa Road, Koloa, HI 96756', 'South', 'Authentic Italian cuisine with fresh pasta and wood-fired pizzas. Intimate atmosphere with outdoor courtyard seating in historic Koloa.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400', 21.9066, -159.4694),
 ('Merriman''s Kauai', '2829 Ala Kalanikaumaka #42, Koloa, Kauai, HI 96756', 'South', 'Farm-to-table fine dining showcasing local ingredients and sustainable Hawaii Regional Cuisine. Upscale yet relaxed ambiance at Poipu Shopping Village.', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400', 21.8825, -159.4663),
+('The Shops at Kukui''ula', '2829 Ala Kalanikaumaka Rd, Koloa, Hawaii 96756', 'South', 'Upscale outdoor shopping center featuring boutiques, galleries, restaurants, and weekly farmers market. Beautiful open-air setting perfect for leisurely browsing and dining.', 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400', 21.8825, -159.4663),
 ('Koloa Fish Market', '3390 Poipu Road, Koloa, HI 96756', 'South', 'Fresh local fish, poke bowls, and plate lunches. Local favorite for quality seafood and generous portions at great prices. Perfect for a quick, delicious meal.', 'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400', 21.8894, -159.4694),
 
 -- North Region Activities  
@@ -21,6 +22,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('Tiki Iniki', '5-4280 Kuhio Hwy, Princeville, HI 96722', 'North', 'Casual beachfront dining with Pacific Rim cuisine and tropical cocktails. Relaxed atmosphere with oceanfront views and live music.', 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400', 22.2139, -159.4869),
 ('The Dolphin Restaurant', '5-5016 Kuhio Highway, Hanalei, HI 96714', 'North', 'Fresh fish market and sushi bar with riverside seating. Catch of the day served simply prepared, highlighting quality ingredients and local flavors.', 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400', 22.2016, -159.5007),
 ('Hanalei Dolphin Fish Market', '5-5016 Kuhio Highway, Hanalei, Kauai, HI 96714', 'North', 'Fresh fish market with daily catches and sushi bar. Local institution offering quality seafood to take home or enjoy at their riverside restaurant.', 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=400', 22.2016, -159.5007),
+('Hanalei Pier', 'Hanalei, HI 96714', 'North', 'Historic pier stretching into Hanalei Bay, perfect for sunset watching, fishing, and photography. Iconic landmark with stunning mountain and bay views.', 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=400', 22.2071, -159.5006),
 
 -- East Region Activities
 ('Wailua Falls', 'Maalo Rd, Kapaa, HI 96746', 'East', 'Stunning 173-foot waterfall easily accessible from the road. Best visited in the morning for rainbow sightings in the mist.', 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=400', 22.0416, -159.3764),
@@ -32,6 +34,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('Lawaia Fish Company', '3082 Peleke St, Ste 101, Lihue, HI 96766', 'East', 'Fresh fish market and deli serving poke, sushi, and seafood plates. Known for quality local catch and authentic Hawaiian-style preparations.', 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400', 21.9742, -159.3556),
 ('The Fish Express', '3-3343 Kuhio Highway #7, Lihue, HI', 'East', 'Popular local fish market offering fresh poke, sushi rolls, and fish plates. Great selection of daily catch with island-style preparations at affordable prices.', 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400', 21.9742, -159.3556),
 ('The Kauai Community Market', '3-1901 Kaumualii Hwy, Lihue, HI 96766', 'East', 'Vibrant Saturday farmers market featuring local produce, crafts, food vendors, and live music. Experience authentic island culture and support local farmers and artisans.', 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400', 21.9742, -159.3556),
+('Secret Falls Kayak and Hike', '4-484 Kuhio Hwy, Kapaʻa, HI 96746', 'East', 'Adventurous kayak up the Wailua River followed by a jungle hike to a stunning hidden waterfall. Tours depart from Coconut Marketplace offering this unforgettable 4-hour experience.', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400', 22.0507, -159.3316),
 
 -- West Region Activities
 ('Waimea Canyon', 'Waimea Canyon Dr, Waimea, HI 96796', 'West', 'The "Grand Canyon of the Pacific" - stunning 3,000-foot deep canyon with red and green cliffs. Multiple lookout points along scenic drive.', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', 22.0818, -159.6579),
@@ -82,4 +85,7 @@ UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Salt
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Waimea Brewing Company' AND c.name = 'Restaurant'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hanapepe Town Friday Night Art Walk' AND c.name = 'Nightlife'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Japanese Grandma''s Cafe' AND c.name = 'Restaurant'
-UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Kauai Community Market' AND c.name = 'Outdoor';
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Kauai Community Market' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Secret Falls Kayak and Hike' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hanalei Pier' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Shops at Kukui''ula' AND c.name = 'Outdoor';
