@@ -1,10 +1,10 @@
 # Kauai Travel Helper
 
-**v1.0.0-MVP** 🌺
+**v1.0.0** 🌺
 
 A beautiful single-page application built with Vue 3 and Node.js/Express to help you discover amazing activities across the four regions of Kauai, Hawaii.
 
-> **MVP Status:** This release includes all core features and is ready for personal use and feedback gathering.
+> **Stable Release:** Production-ready with 37 curated activities, multi-category support, and automatic data caching.
 
 ## Features
 

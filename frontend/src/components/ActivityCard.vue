@@ -1,9 +1,12 @@
 <template>
   <router-link
-    :to="{ name: 'activity-detail', params: { id: activity.id, region: activity.region.toLowerCase() } }"
-    class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group h-full"
+    :to="{
+      name: 'activity-detail',
+      params: { id: activity.id, region: activity.region.toLowerCase() },
+    }"
+    class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
   >
-    <div class="flex flex-col sm:flex-row sm:h-56">
+    <div class="flex flex-col sm:flex-row h-full sm:h-56">
       <!-- Thumbnail -->
       <div class="sm:w-48 h-48 sm:h-56 flex-shrink-0 overflow-hidden">
         <img
