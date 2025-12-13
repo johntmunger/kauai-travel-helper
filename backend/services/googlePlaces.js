@@ -93,6 +93,9 @@ export async function findNearbyPlaces(latitude, longitude, radius = 5000) {
         address: place.vicinity,
         rating: place.rating,
         place_id: place.place_id,
+        photo: place.photos && place.photos.length > 0 
+          ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photo_reference=${place.photos[0].photo_reference}&key=${GOOGLE_PLACES_API_KEY}`
+          : null,
       }));
     }
     return [];

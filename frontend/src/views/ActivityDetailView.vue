@@ -121,6 +121,25 @@
               Additional Information
             </h2>
 
+            <!-- Current Status -->
+            <div
+              v-if="details.is_open !== null"
+              class="mb-4 pb-4 border-b border-gray-200"
+            >
+              <div class="flex items-center">
+                <span
+                  class="w-3 h-3 rounded-full mr-2"
+                  :class="details.is_open ? 'bg-green-500' : 'bg-red-500'"
+                ></span>
+                <span
+                  class="font-semibold"
+                  :class="details.is_open ? 'text-green-700' : 'text-red-700'"
+                >
+                  {{ details.is_open ? "Open Now" : "Closed" }}
+                </span>
+              </div>
+            </div>
+
             <!-- Rating -->
             <div v-if="details.rating" class="mb-4">
               <div class="flex items-center">
@@ -163,7 +182,7 @@
             </div>
 
             <!-- Reviews -->
-            <div v-if="details.reviews && details.reviews.length" class="mt-6">
+            <div v-if="details.reviews && details.reviews.length" class="mt-10">
               <h3 class="font-semibold text-gray-900 mb-3">Recent Reviews</h3>
               <div class="space-y-3">
                 <div
@@ -188,40 +207,66 @@
 
         <!-- Sidebar -->
         <div class="lg:col-span-1 space-y-6">
-          <!-- Status Card -->
-          <div v-if="details && details.is_open !== null" class="bg-white rounded-lg shadow-md p-6">
-            <h3 class="font-semibold text-gray-900 mb-4">Current Status</h3>
-
-            <div class="flex items-center justify-center py-3">
-              <span
-                class="w-4 h-4 rounded-full mr-3"
-                :class="details.is_open ? 'bg-green-500' : 'bg-red-500'"
-              ></span>
-              <span
-                class="text-lg font-semibold"
-                :class="details.is_open ? 'text-green-700' : 'text-red-700'"
-              >
-                {{ details.is_open ? "Open Now" : "Closed" }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Nearby Activities -->
+          <!-- Nearby Places -->
           <div
             v-if="nearbyActivities && nearbyActivities.length"
             class="bg-white rounded-lg shadow-md p-6"
           >
             <h3 class="font-semibold text-gray-900 mb-4">Nearby Places</h3>
-            <ul class="space-y-3">
+            <ul class="space-y-4">
               <li
                 v-for="(place, index) in nearbyActivities"
                 :key="index"
-                class="pb-3 border-b border-gray-200 last:border-0"
+                class="pb-4 border-b border-gray-200 last:border-0"
               >
-                <div class="font-medium text-gray-900">{{ place.name }}</div>
-                <div class="text-sm text-gray-600">{{ place.address }}</div>
-                <div v-if="place.rating" class="text-sm text-yellow-600 mt-1">
-                  ★ {{ place.rating }}
+                <!-- Thumbnail + Info -->
+                <div class="flex gap-3">
+                  <!-- Thumbnail Image -->
+                  <div
+                    v-if="place.photo"
+                    class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden"
+                  >
+                    <img
+                      :src="place.photo"
+                      :alt="place.name"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <!-- Placeholder if no image -->
+                  <div
+                    v-else
+                    class="w-20 h-20 flex-shrink-0 rounded-lg bg-gray-200 flex items-center justify-center"
+                  >
+                    <svg
+                      class="w-8 h-8 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="flex-1 min-w-0">
+                    <div class="font-medium text-gray-900 truncate">
+                      {{ place.name }}
+                    </div>
+                    <div class="text-sm text-gray-600 truncate">
+                      {{ place.address }}
+                    </div>
+                    <div
+                      v-if="place.rating"
+                      class="text-sm text-yellow-600 mt-1"
+                    >
+                      ★ {{ place.rating }}
+                    </div>
+                  </div>
                 </div>
               </li>
             </ul>

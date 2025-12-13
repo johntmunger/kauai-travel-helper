@@ -81,10 +81,10 @@ const route = useRoute();
 const mobileMenuOpen = ref(false);
 
 const regions = [
-  { label: "North Shore", value: "North", color: "region-north" },
-  { label: "East Side", value: "East", color: "region-east" },
-  { label: "South Shore", value: "South", color: "region-south" },
-  { label: "West Side", value: "West", color: "region-west" },
+  { label: "North Princeville", value: "North", color: "region-north" },
+  { label: "East Lihue", value: "East", color: "region-east" },
+  { label: "South Poipu", value: "South", color: "region-south" },
+  { label: "West Waimea", value: "West", color: "region-west" },
 ];
 
 const getRegionClasses = (regionValue) => {
