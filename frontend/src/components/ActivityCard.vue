@@ -101,6 +101,7 @@ const getCategoryClasses = (category) => {
     Restaurant: "bg-red-100 text-red-800",
     Outdoor: "bg-green-100 text-green-800",
     Nightlife: "bg-purple-100 text-purple-800",
+    "Fish Market": "bg-blue-100 text-blue-800",
     default: "bg-gray-100 text-gray-800",
   };
   return categoryMap[category] || categoryMap.default;

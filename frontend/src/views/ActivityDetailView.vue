@@ -52,10 +52,7 @@
           <!-- Image -->
           <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <img
-              :src="
-                activity.thumbnail_url ||
-                'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800'
-              "
+              :src="getHighResImage(activity.thumbnail_url)"
               :alt="activity.name"
               class="w-full h-96 object-cover"
             />
@@ -182,7 +179,7 @@
             </div>
 
             <!-- Reviews -->
-            <div v-if="details.reviews && details.reviews.length" class="mt-10">
+            <div v-if="details.reviews && details.reviews.length" class="mt-6">
               <h3 class="font-semibold text-gray-900 mb-3">Recent Reviews</h3>
               <div class="space-y-3">
                 <div
@@ -294,9 +291,18 @@ const getCategoryClasses = (category) => {
     Restaurant: "bg-red-100 text-red-800",
     Outdoor: "bg-green-100 text-green-800",
     Nightlife: "bg-purple-100 text-purple-800",
+    "Fish Market": "bg-blue-100 text-blue-800",
     default: "bg-gray-100 text-gray-800",
   };
   return categoryMap[category] || categoryMap.default;
+};
+
+const getHighResImage = (thumbnailUrl) => {
+  if (!thumbnailUrl) {
+    return "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1600&auto=format&fit=crop";
+  }
+  // Replace w=400 with w=1600 for high resolution detail view
+  return thumbnailUrl.replace("?w=400", "?q=80&w=1600&auto=format&fit=crop");
 };
 
 const getRegionBadgeClass = (region) => {
