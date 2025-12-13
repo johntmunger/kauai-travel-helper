@@ -27,7 +27,7 @@
     >
       <!-- Back Button -->
       <button
-        @click="$router.back()"
+        @click="goBack"
         class="mb-4 flex items-center text-gray-600 hover:text-gray-900 transition-colors"
       >
         <svg
@@ -82,6 +82,7 @@
               <span
                 class="px-3 py-1 rounded-full text-sm font-semibold text-white"
                 :class="getRegionBadgeClass(activity.region)"
+                style="background-color: #999999"
               >
                 {{ activity.region }}
               </span>
@@ -281,10 +282,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { getActivityById } from "../services/api";
 
 const route = useRoute();
+const router = useRouter();
 const activity = ref(null);
 const details = ref(null);
 const nearbyActivities = ref([]);
@@ -311,13 +313,14 @@ const getHighResImage = (thumbnailUrl) => {
 };
 
 const getRegionBadgeClass = (region) => {
-  const regionMap = {
-    North: "bg-blue-500",
-    East: "bg-green-500",
-    South: "bg-orange-500",
-    West: "bg-amber-500",
-  };
-  return regionMap[region] || "bg-gray-500";
+  // Consistent slate gray for all regions
+  return "bg-slate-600";
+};
+
+const goBack = () => {
+  // Go back to the region view
+  const region = route.params.region || "south";
+  router.push(`/${region}`);
 };
 
 const fetchActivity = async () => {

@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="`/activity/${activity.id}`"
+    :to="{ name: 'activity-detail', params: { id: activity.id, region: activity.region.toLowerCase() } }"
     class="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
   >
     <div class="flex flex-col sm:flex-row">

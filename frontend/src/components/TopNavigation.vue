@@ -3,7 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo/Title -->
-        <div class="flex-shrink-0 flex items-center gap-3">
+        <router-link
+          to="/north"
+          class="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+        >
           <!-- Pineapple Icon -->
           <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none">
             <!-- Crown/Leaves -->
@@ -62,7 +65,7 @@
           </svg>
 
           <h1 class="text-2xl font-bold text-gray-800">Kauai Travel Guide</h1>
-        </div>
+        </router-link>
 
         <!-- Region Navigation -->
         <div class="hidden md:flex space-x-1">
