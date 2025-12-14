@@ -28,7 +28,7 @@
       <!-- Back Button -->
       <button
         @click="goBack"
-        class="mb-4 flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        class="mb-4 flex items-center px-3 py-1.5 bg-white/70 border border-gray-200 rounded-md text-gray-600 hover:bg-white hover:text-gray-900 transition-all"
       >
         <svg
           class="w-5 h-5 mr-1"
