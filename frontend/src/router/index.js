@@ -5,7 +5,7 @@ import ActivityDetailView from '../views/ActivityDetailView.vue';
 const routes = [
   {
     path: '/',
-    redirect: '/north',
+    redirect: '/south',
   },
   {
     path: '/:region',
@@ -16,7 +16,7 @@ const routes = [
       if (validRegions.includes(to.params.region.toLowerCase())) {
         next();
       } else {
-        next('/north');
+        next('/south');
       }
     },
   },
@@ -27,7 +27,7 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/north',
+    redirect: '/south',
   },
 ];
 

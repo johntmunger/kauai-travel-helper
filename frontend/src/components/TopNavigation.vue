@@ -3,8 +3,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo/Title -->
-        <router-link
-          to="/north"
+        <router-link 
+          to="/south"
           class="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
         >
           <!-- Pineapple Icon -->
@@ -141,10 +141,10 @@ const route = useRoute();
 const mobileMenuOpen = ref(false);
 
 const regions = [
-  { label: "North Shore", value: "North", color: "region-north" },
-  { label: "East Side", value: "East", color: "region-east" },
   { label: "South Shore", value: "South", color: "region-south" },
   { label: "West Side", value: "West", color: "region-west" },
+  { label: "East Side", value: "East", color: "region-east" },
+  { label: "North Shore", value: "North", color: "region-north" },
 ];
 
 const getRegionClasses = (regionValue) => {
