@@ -5,6 +5,28 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-12-13
+
+### ✨ Feature Release
+
+Enhanced v1.1.0 with contact information and improved interactivity.
+
+### Added
+- **Contact & Booking Integration** - Phone numbers, website links, and directions from Google Places API
+- **Clickable Nearby Places** - Click any nearby place to open in Google Maps
+- **3 New Activities** - Hanalei Pier, Secret Falls Kayak Tour, Shops at Kukui'ula
+- **Improved Contact Display** - Clean, minimal design with icons
+
+### Changed
+- Nearby places now open in Google Maps when clicked
+- Contact information displays in Additional Information section
+- Refined text sizing for contact links
+- Total activities increased to 37
+
+### Fixed
+- Secret Falls image updated to show kayaking
+- Various image quality improvements
+
 ## [1.0.0] - 2025-12-13
 
 ### 🎉 Stable Release

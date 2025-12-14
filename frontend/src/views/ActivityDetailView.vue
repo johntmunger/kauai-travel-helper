@@ -268,7 +268,12 @@
                 class="pb-4 border-b border-gray-200 last:border-0"
               >
                 <!-- Thumbnail + Info -->
-                <div class="flex gap-3">
+                <a
+                  :href="`https://www.google.com/maps/place/?q=place_id:${place.place_id}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex gap-3 hover:opacity-75 transition-opacity cursor-pointer"
+                >
                   <!-- Thumbnail Image -->
                   <div
                     v-if="place.photo"
@@ -315,7 +320,7 @@
                       ★ {{ place.rating }}
                     </div>
                   </div>
-                </div>
+                </a>
               </li>
             </ul>
           </div>

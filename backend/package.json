@@ -1,6 +1,6 @@
 {
   "name": "kauai-trip-backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Backend API for Kauai Travel Helper - A Vue 3 travel discovery app for Kauai, Hawaii",
   "main": "server.js",
   "type": "module",
