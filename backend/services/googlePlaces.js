@@ -44,7 +44,7 @@ export async function getPlaceDetails(placeId) {
     const response = await axios.get(PLACE_DETAILS_URL, {
       params: {
         place_id: placeId,
-        fields: 'name,rating,user_ratings_total,opening_hours,reviews,photos,formatted_address',
+        fields: 'name,rating,user_ratings_total,opening_hours,reviews,photos,formatted_address,formatted_phone_number,international_phone_number,website,url',
         key: GOOGLE_PLACES_API_KEY,
       },
     });
@@ -61,6 +61,9 @@ export async function getPlaceDetails(placeId) {
           reference: photo.photo_reference,
           url: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photo.photo_reference}&key=${GOOGLE_PLACES_API_KEY}`,
         })) || [],
+        phone: result.formatted_phone_number || result.international_phone_number || null,
+        website: result.website || null,
+        google_maps_url: result.url || null,
       };
     }
     return null;

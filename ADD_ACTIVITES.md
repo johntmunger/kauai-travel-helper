@@ -1,39 +1,15 @@
-# Contributing to Kauai Travel Helper
+# More About Adding Activities to the Database
 
-First off, thank you for considering contributing to Kauai Travel Helper! 🌺
-
-## 🤝 How Can I Contribute?
-
-### Reporting Bugs
-
-Before creating bug reports, please check existing issues. When creating a bug report, include as many details as possible:
-
-- **Use a clear and descriptive title**
-- **Describe the exact steps to reproduce the problem**
-- **Provide specific examples**
-- **Describe the behavior you observed and what you expected**
-- **Include screenshots if applicable**
-- **Include your environment details** (OS, Node version, browser, etc.)
-
-### Suggesting Enhancements
-
-Enhancement suggestions are welcome! Please provide:
-
-- **Clear and descriptive title**
-- **Detailed description of the proposed functionality**
-- **Explain why this enhancement would be useful**
-- **List any similar features in other applications**
-
-### Adding New Activities
-
-Want to add more Kauai activities? Great!
+Want to add more Kauai activities?
 
 1. Edit `backend/database/seed.sql`
 2. Follow the existing format:
+
 ```sql
 INSERT INTO activities (name, address, region, category, short_description, thumbnail_url, latitude, longitude) VALUES
 ('Activity Name', 'Full Address', 'Region', 'Category', 'Description', 'Image URL', lat, long);
 ```
+
 3. Ensure proper region: `North`, `East`, `South`, or `West`
 4. Use appropriate category: `Restaurant`, `Outdoor`, or `Nightlife`
 5. Test locally before submitting
@@ -89,17 +65,20 @@ npm test
 ## 🎨 Design Guidelines
 
 ### UI/UX
+
 - Maintain consistent color scheme (region colors)
 - Ensure mobile responsiveness
 - Follow existing component patterns
 - Keep accessibility in mind
 
 ### Database
+
 - Follow existing schema structure
 - Add indexes for performance
 - Document any schema changes
 
 ### API
+
 - Follow RESTful principles
 - Return consistent response formats
 - Handle errors gracefully
@@ -145,6 +124,7 @@ When adding new features:
 ## 🌟 Good First Issues
 
 Looking for a place to start? Look for issues labeled:
+
 - `good first issue`
 - `help wanted`
 - `documentation`
@@ -154,12 +134,14 @@ Looking for a place to start? Look for issues labeled:
 Some areas where contributions are welcome:
 
 ### Data
+
 - Add more activities (aim for 10+ per region)
 - Add more activity categories
 - Include operating hours data
 - Add price range information
 
 ### Features
+
 - Interactive map integration
 - Weather widget
 - User authentication
@@ -169,6 +151,7 @@ Some areas where contributions are welcome:
 - User reviews
 
 ### Improvements
+
 - Add unit tests
 - Add E2E tests
 - Improve error handling
@@ -178,6 +161,7 @@ Some areas where contributions are welcome:
 - Improve SEO
 
 ### Documentation
+
 - Add video tutorials
 - Create API documentation
 - Add architecture diagrams
@@ -226,6 +210,7 @@ By contributing, you agree that your contributions will be licensed under the MI
 ## 🎉 Recognition
 
 Contributors will be recognized in:
+
 - README.md contributors section
 - Release notes
 - GitHub contributors page
@@ -237,4 +222,3 @@ Thank you for contributing to making Kauai Travel Helper better for everyone! Yo
 ---
 
 Questions? Feel free to ask in GitHub Discussions or open an issue!
-
