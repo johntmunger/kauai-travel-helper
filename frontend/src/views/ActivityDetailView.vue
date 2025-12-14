@@ -269,7 +269,7 @@
               >
                 <!-- Thumbnail + Info -->
                 <a
-                  :href="`https://www.google.com/maps/place/?q=place_id:${place.place_id}`"
+                  :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}&query_place_id=${place.place_id}`"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="flex gap-3 hover:opacity-75 transition-opacity cursor-pointer"
