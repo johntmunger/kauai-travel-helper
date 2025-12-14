@@ -10,6 +10,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('La Spezia', '5492 Koloa Road, Koloa, HI 96756', 'South', 'Authentic Italian cuisine with fresh pasta and wood-fired pizzas. Intimate atmosphere with outdoor courtyard seating in historic Koloa.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400', 21.9066, -159.4694),
 ('Merriman''s Kauai', '2829 Ala Kalanikaumaka #42, Koloa, Kauai, HI 96756', 'South', 'Farm-to-table fine dining showcasing local ingredients and sustainable Hawaii Regional Cuisine. Upscale yet relaxed ambiance at Poipu Shopping Village.', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400', 21.8825, -159.4663),
 ('The Shops at Kukui''ula', '2829 Ala Kalanikaumaka Rd, Koloa, Hawaii 96756', 'South', 'Upscale outdoor shopping center featuring boutiques, galleries, restaurants, and weekly farmers market. Beautiful open-air setting perfect for leisurely browsing and dining.', 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400', 21.8825, -159.4663),
+('Shipwreck Beach', 'Poipu, HI 96756', 'South', 'Dramatic beach known for powerful waves and scenic coastal cliffs. Popular spot for experienced surfers and photographers seeking stunning sunsets and rugged coastline views.', 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400', 21.8850, -159.4500),
 ('Koloa Fish Market', '3390 Poipu Road, Koloa, HI 96756', 'South', 'Fresh local fish, poke bowls, and plate lunches. Local favorite for quality seafood and generous portions at great prices. Perfect for a quick, delicious meal.', 'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400', 21.8894, -159.4694),
 
 -- North Region Activities  
@@ -42,7 +43,8 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('Salt Pond Beach Park', '4310 Lele Rd, Hanapepe, HI 96716', 'West', 'Protected swimming beach with ancient Hawaiian salt ponds still in use. Great for families, swimming, and cultural history.', 'https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=400', 21.9193, -159.5958),
 ('Waimea Brewing Company', '9400 Kaumualii Hwy, Waimea, HI 96796', 'West', 'Craft brewery and restaurant with locally-inspired dishes. Great spot to refuel after canyon exploration.', 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=400', 21.9643, -159.6673),
 ('Hanapepe Town Friday Night Art Walk', 'Hanapepe Rd, Hanapepe, HI 96716', 'West', 'Weekly art walk featuring local galleries, live music, food trucks, and authentic small-town Hawaii charm every Friday evening.', 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400', 21.9088, -159.5917),
-('Japanese Grandma''s Cafe', '3871 Hanapepe Rd, Hanapepe, HI 96716', 'West', 'Charming local cafe serving authentic Japanese comfort food with island touches. Known for generous portions, friendly service, and affordable prices.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400', 21.9088, -159.5917);
+('Japanese Grandma''s Cafe', '3871 Hanapepe Rd, Hanapepe, HI 96716', 'West', 'Charming local cafe serving authentic Japanese comfort food with island touches. Known for generous portions, friendly service, and affordable prices.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400', 21.9088, -159.5917),
+('JoJo''s Shave Ice', 'Waimea, HI 96796', 'West', 'Local favorite shave ice stand serving refreshing Hawaiian-style shave ice with tropical flavors. Perfect treat after exploring Waimea Canyon or the west side beaches.', 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400', 21.9643, -159.6673);
 
 -- Link activities to categories (many-to-many)
 INSERT INTO activity_categories (activity_id, category_id)
@@ -88,4 +90,6 @@ UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Japa
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Kauai Community Market' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Secret Falls Kayak and Hike' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hanalei Pier' AND c.name = 'Outdoor'
-UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Shops at Kukui''ula' AND c.name = 'Outdoor';
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Shops at Kukui''ula' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Shipwreck Beach' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'JoJo''s Shave Ice' AND c.name = 'Restaurant';
