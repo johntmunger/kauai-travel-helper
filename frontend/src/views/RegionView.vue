@@ -294,5 +294,10 @@ watch(
 onMounted(() => {
   window.addEventListener("resize", updateWidth);
   fetchActivities();
+  
+  // Check if there's a search query in URL
+  if (route.query.q) {
+    searchQuery.value = route.query.q;
+  }
 });
 </script>

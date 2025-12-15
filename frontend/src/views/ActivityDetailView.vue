@@ -25,26 +25,56 @@
       v-else-if="activity"
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
     >
-      <!-- Back Button -->
-      <button
-        @click="goBack"
-        class="mb-4 flex items-center px-3 py-1.5 bg-white/70 border border-gray-200 rounded-md text-gray-600 hover:bg-white hover:text-gray-900 transition-all"
-      >
-        <svg
-          class="w-5 h-5 mr-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+      <!-- Back Button and Search -->
+      <div class="mb-4 flex items-center justify-between gap-2">
+        <button
+          @click="goBack"
+          class="flex items-center px-3 py-1.5 bg-white/70 border border-gray-200 rounded-md text-gray-600 hover:bg-white hover:text-gray-900 transition-all"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"
+          <svg
+            class="w-5 h-5 mr-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back
+        </button>
+
+        <!-- Search Bar -->
+        <div class="relative flex-1 min-w-0 max-w-xs lg:max-w-md ml-auto">
+          <div
+            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <input
+            type="text"
+            v-model="searchQuery"
+            @keyup.enter="performSearch"
+            :placeholder="searchPlaceholder"
+            class="w-full pl-9 pr-3 py-2 text-sm bg-white shadow-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-        </svg>
-        Back
-      </button>
+        </div>
+      </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Main Content -->
@@ -367,7 +397,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getActivityById } from "../services/api";
 
@@ -378,6 +408,27 @@ const details = ref(null);
 const nearbyActivities = ref([]);
 const loading = ref(true);
 const error = ref(null);
+const searchQuery = ref("");
+const windowWidth = ref(window.innerWidth);
+
+// Update window width on resize
+const updateWidth = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+// Responsive placeholder
+const searchPlaceholder = computed(() => {
+  return windowWidth.value >= 640
+    ? "Try 'beach', 'restaurant', or 'Hanalei'..."
+    : "Search...";
+});
+
+const performSearch = () => {
+  if (searchQuery.value.trim()) {
+    // Navigate to South Shore with search query in URL
+    router.push({ path: "/south", query: { q: searchQuery.value } });
+  }
+};
 
 const getCategoryClasses = (category) => {
   const categoryMap = {
@@ -394,17 +445,17 @@ const getHighResImage = (thumbnailUrl) => {
   if (!thumbnailUrl) {
     return "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1600&auto=format&fit=crop";
   }
-  
+
   // Handle Squarespace CDN URLs (already high-res format)
-  if (thumbnailUrl.includes('squarespace-cdn.com')) {
+  if (thumbnailUrl.includes("squarespace-cdn.com")) {
     return thumbnailUrl; // Use as-is, already set to high resolution
   }
-  
+
   // Handle Google CDN URLs (already sized appropriately)
-  if (thumbnailUrl.includes('googleusercontent.com')) {
+  if (thumbnailUrl.includes("googleusercontent.com")) {
     return thumbnailUrl; // Use as-is
   }
-  
+
   // For Unsplash: Replace w=400 with w=1600 for high resolution detail view
   return thumbnailUrl.replace("?w=400", "?q=80&w=1600&auto=format&fit=crop");
 };
@@ -445,6 +496,7 @@ const fetchActivity = async () => {
 };
 
 onMounted(() => {
+  window.addEventListener("resize", updateWidth);
   fetchActivity();
 });
 </script>

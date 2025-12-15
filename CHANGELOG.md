@@ -5,6 +5,23 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2025-12-13
+
+### 🔧 Search Completion
+
+Completed search feature by making it accessible from all pages.
+
+### Added
+
+- **Search on Detail Pages** - Search bar now available on activity detail pages
+- **App-Wide Search** - Search accessible from anywhere in the app
+- **URL Query Support** - Search terms persist in URL for sharing
+
+### Fixed
+
+- Final image quality improvements (Puka Dog, Japanese Grandma's)
+- All duplicate images resolved
+
 ## [1.3.0] - 2025-12-13
 
 ### 🔍 Search Feature Release
