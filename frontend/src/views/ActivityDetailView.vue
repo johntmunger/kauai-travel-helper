@@ -394,7 +394,18 @@ const getHighResImage = (thumbnailUrl) => {
   if (!thumbnailUrl) {
     return "https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1600&auto=format&fit=crop";
   }
-  // Replace w=400 with w=1600 for high resolution detail view
+  
+  // Handle Squarespace CDN URLs (already high-res format)
+  if (thumbnailUrl.includes('squarespace-cdn.com')) {
+    return thumbnailUrl; // Use as-is, already set to high resolution
+  }
+  
+  // Handle Google CDN URLs (already sized appropriately)
+  if (thumbnailUrl.includes('googleusercontent.com')) {
+    return thumbnailUrl; // Use as-is
+  }
+  
+  // For Unsplash: Replace w=400 with w=1600 for high resolution detail view
   return thumbnailUrl.replace("?w=400", "?q=80&w=1600&auto=format&fit=crop");
 };
 
