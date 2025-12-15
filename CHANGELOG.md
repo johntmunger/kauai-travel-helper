@@ -12,15 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Critical production fixes for routing and deployment.
 
 ### Fixed
+
 - **SPA Routing on Render** - Added Express server to properly handle all routes
 - **404 Errors** - All routes now work correctly on mobile and desktop
-- **Production Deployment** - Added _redirects file for static hosting
+- **Production Deployment** - Added \_redirects file for static hosting
 - **CORS Configuration** - Ensured proper environment variable setup
 
 ### Added
+
 - Express server for frontend (handles SPA routing)
 - render.yaml for infrastructure as code
-- _redirects file for fallback routing
+- \_redirects file for fallback routing
 
 ## [1.1.0] - 2025-12-13
 
@@ -29,18 +31,21 @@ Critical production fixes for routing and deployment.
 Enhanced v1.1.0 with contact information and improved interactivity.
 
 ### Added
+
 - **Contact & Booking Integration** - Phone numbers, website links, and directions from Google Places API
 - **Clickable Nearby Places** - Click any nearby place to open in Google Maps
 - **3 New Activities** - Hanalei Pier, Secret Falls Kayak Tour, Shops at Kukui'ula
 - **Improved Contact Display** - Clean, minimal design with icons
 
 ### Changed
+
 - Nearby places now open in Google Maps when clicked
 - Contact information displays in Additional Information section
 - Refined text sizing for contact links
 - Total activities increased to 37
 
 ### Fixed
+
 - Secret Falls image updated to show kayaking
 - Various image quality improvements
 
@@ -51,6 +56,7 @@ Enhanced v1.1.0 with contact information and improved interactivity.
 Official v1.0.0 stable release of the Kauai Travel Helper - a beautiful single-page application for discovering activities across the four regions of Kauai, Hawaii. Graduated from MVP to stable after thorough testing and polish.
 
 ### What's New from MVP
+
 - Fixed activity card heights for perfect vertical alignment
 - Updated to 37 curated activities (from initial 33)
 - All images verified and working

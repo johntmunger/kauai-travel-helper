@@ -36,20 +36,16 @@
         <div class="mb-6 flex flex-wrap gap-2">
           <button
             @click="selectedCategory = null"
-            class="px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
-            :class="
-              selectedCategory === null
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
-            "
+            class="px-4 py-2 rounded-lg font-medium transition-colors shadow-sm sm:shadow-sm bg-white/70 sm:bg-blue-600 text-gray-700 sm:text-white border border-gray-200 sm:border-0"
           >
             All ({{ activities.length }})
           </button>
+          <!-- Hide category buttons on portrait mobile, show on landscape and larger -->
           <button
             v-for="category in categories"
             :key="category"
             @click="selectedCategory = category"
-            class="px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
+            class="hidden sm:inline-flex px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
             :class="
               selectedCategory === category
                 ? 'bg-blue-600 text-white'
@@ -105,14 +101,14 @@ const categories = computed(() => {
 
 const filteredActivities = computed(() => {
   if (!selectedCategory.value) return activities.value;
-  return activities.value.filter((a) => 
-    a.categories && a.categories.includes(selectedCategory.value)
+  return activities.value.filter(
+    (a) => a.categories && a.categories.includes(selectedCategory.value)
   );
 });
 
 const getCountByCategory = (category) => {
-  return activities.value.filter((a) => 
-    a.categories && a.categories.includes(category)
+  return activities.value.filter(
+    (a) => a.categories && a.categories.includes(category)
   ).length;
 };
 

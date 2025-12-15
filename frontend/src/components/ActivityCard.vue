@@ -21,15 +21,26 @@
 
       <!-- Content -->
       <div class="flex-1 p-5">
-        <!-- Category Badges -->
-        <div class="flex flex-wrap gap-2 mb-2">
+        <!-- Header with Category and Region -->
+        <div class="flex items-start justify-between mb-2">
+          <!-- Category Badges -->
+          <div class="flex flex-wrap gap-2">
+            <span
+              v-for="category in activity.categories"
+              :key="category"
+              class="inline-block px-3 py-1 text-xs font-semibold rounded-full"
+              :class="getCategoryClasses(category)"
+            >
+              {{ category }}
+            </span>
+          </div>
+
+          <!-- Region Badge -->
           <span
-            v-for="category in activity.categories"
-            :key="category"
-            class="inline-block px-3 py-1 text-xs font-semibold rounded-full"
-            :class="getCategoryClasses(category)"
+            class="px-3 py-1 rounded-full text-sm font-semibold text-white flex-shrink-0"
+            style="background-color: rgb(153, 153, 153)"
           >
-            {{ category }}
+            {{ activity.region }}
           </span>
         </div>
 
