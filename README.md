@@ -8,7 +8,7 @@ A modern single-page application built with Vue 3 and Node.js/Express to help yo
 
 ## 🌐 Live Demo
 
-**Frontend:** [https://kauai-travel-helper.onrender.com](https://kauai-travel-helper.onrender.com)  
+**Frontend:** [Online browsewr demo!](https://kauai-travel-helper-frontend.onrender.com/)  
 **API:** [https://kauai-backend.onrender.com/api](https://kauai-backend.onrender.com/api)
 
 > **Note:** Replace with your actual Render.com URLs after deployment
