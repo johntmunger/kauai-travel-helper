@@ -156,7 +156,7 @@ const updateWidth = () => {
 const searchPlaceholder = computed(() => {
   return windowWidth.value >= 640
     ? "Try 'beach', 'restaurant', or 'Hanalei'..."
-    : "Search...";
+    : "Try 'beach', or 'Hanalei'...";
 });
 
 const regionTitle = computed(() => {
@@ -294,7 +294,7 @@ watch(
 onMounted(() => {
   window.addEventListener("resize", updateWidth);
   fetchActivities();
-  
+
   // Check if there's a search query in URL
   if (route.query.q) {
     searchQuery.value = route.query.q;

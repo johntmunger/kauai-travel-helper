@@ -420,7 +420,7 @@ const updateWidth = () => {
 const searchPlaceholder = computed(() => {
   return windowWidth.value >= 640
     ? "Try 'beach', 'restaurant', or 'Hanalei'..."
-    : "Search...";
+    : "Try 'beach', or 'Hanalei'...";
 });
 
 const performSearch = () => {
