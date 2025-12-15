@@ -5,6 +5,23 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2025-12-13
+
+### 🐛 Bug Fix Release
+
+Critical production fixes for routing and deployment.
+
+### Fixed
+- **SPA Routing on Render** - Added Express server to properly handle all routes
+- **404 Errors** - All routes now work correctly on mobile and desktop
+- **Production Deployment** - Added _redirects file for static hosting
+- **CORS Configuration** - Ensured proper environment variable setup
+
+### Added
+- Express server for frontend (handles SPA routing)
+- render.yaml for infrastructure as code
+- _redirects file for fallback routing
+
 ## [1.1.0] - 2025-12-13
 
 ### ✨ Feature Release

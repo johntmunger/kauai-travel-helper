@@ -25,7 +25,7 @@ app.get("/api", (req, res) => {
   res.json({
     success: true,
     message: "Kauai Travel Helper API",
-    version: "1.1.0",
+    version: "1.1.1",
     status: "Stable Release",
     endpoints: {
       regions: "/api/regions",
