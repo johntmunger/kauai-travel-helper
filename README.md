@@ -1,6 +1,6 @@
 # Kauai Travel Helper
 
-**v1.2.0** 🌺
+**v1.3.0** 🌺
 
 A modern single-page application built with Vue 3 and Node.js/Express to help you discover amazing activities across the four regions of Kauai, Hawaii.
 

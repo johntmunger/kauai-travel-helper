@@ -1,75 +1,78 @@
-import sqlite3 from 'sqlite3';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { readFileSync } from 'fs';
+import sqlite3 from "sqlite3";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import { readFileSync } from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const dbPath = join(__dirname, '../database/kauai.db');
+const dbPath = join(__dirname, "../database/kauai.db");
 const db = new sqlite3.Database(dbPath);
 
 // Initialize database with schema and seed data
 export function initializeDatabase() {
   return new Promise((resolve, reject) => {
-    const schemaPath = join(__dirname, '../database/schema.sql');
-    const seedPath = join(__dirname, '../database/seed.sql');
+    const schemaPath = join(__dirname, "../database/schema.sql");
+    const seedPath = join(__dirname, "../database/seed.sql");
 
-    const schema = readFileSync(schemaPath, 'utf8');
-    
+    const schema = readFileSync(schemaPath, "utf8");
+
     db.serialize(() => {
       // Create tables
       db.exec(schema, (err) => {
         if (err) {
-          console.error('Error creating schema:', err);
+          console.error("Error creating schema:", err);
           reject(err);
           return;
         }
-        
+
         // Check if database is already seeded
-        db.get('SELECT COUNT(*) as count FROM activities', (err, row) => {
+        db.get("SELECT COUNT(*) as count FROM activities", (err, row) => {
           if (err) {
             reject(err);
             return;
           }
-          
+
           // Only seed if database is empty
           if (row.count === 0) {
-            const seed = readFileSync(seedPath, 'utf8');
+            const seed = readFileSync(seedPath, "utf8");
             db.exec(seed, (err) => {
               if (err) {
-                console.error('Error seeding database:', err);
+                console.error("Error seeding database:", err);
                 reject(err);
                 return;
               }
-              console.log('Database initialized and seeded successfully');
+              console.log("Database initialized and seeded successfully");
               resolve();
             });
           } else {
             // Check if categories are linked
-            db.get('SELECT COUNT(*) as count FROM activity_categories', (err, linkRow) => {
-              if (err) {
-                reject(err);
-                return;
-              }
-              
-              // If activities exist but no category links, reseed
-              if (linkRow.count === 0) {
-                const seed = readFileSync(seedPath, 'utf8');
-                db.exec(seed, (err) => {
-                  if (err) {
-                    console.error('Error re-seeding categories:', err);
-                    reject(err);
-                    return;
-                  }
-                  console.log('Database categories re-linked successfully');
+            db.get(
+              "SELECT COUNT(*) as count FROM activity_categories",
+              (err, linkRow) => {
+                if (err) {
+                  reject(err);
+                  return;
+                }
+
+                // If activities exist but no category links, reseed
+                if (linkRow.count === 0) {
+                  const seed = readFileSync(seedPath, "utf8");
+                  db.exec(seed, (err) => {
+                    if (err) {
+                      console.error("Error re-seeding categories:", err);
+                      reject(err);
+                      return;
+                    }
+                    console.log("Database categories re-linked successfully");
+                    resolve();
+                  });
+                } else {
+                  console.log("Database already seeded");
                   resolve();
-                });
-              } else {
-                console.log('Database already seeded');
-                resolve();
+                }
               }
-            });
+            );
           }
         });
       });
@@ -80,10 +83,37 @@ export function initializeDatabase() {
 // Get all regions
 export function getAllRegions() {
   return new Promise((resolve, reject) => {
-    db.all('SELECT DISTINCT region FROM activities ORDER BY region', (err, rows) => {
-      if (err) reject(err);
-      else resolve(rows);
-    });
+    db.all(
+      "SELECT DISTINCT region FROM activities ORDER BY region",
+      (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      }
+    );
+  });
+}
+
+// Get all activities (for search)
+export function getAllActivities() {
+  return new Promise((resolve, reject) => {
+    db.all(
+      `SELECT a.*, GROUP_CONCAT(c.name) as categories
+       FROM activities a
+       LEFT JOIN activity_categories ac ON a.id = ac.activity_id
+       LEFT JOIN categories c ON ac.category_id = c.id
+       GROUP BY a.id
+       ORDER BY a.name`,
+      (err, rows) => {
+        if (err) reject(err);
+        else {
+          const activities = rows.map((row) => ({
+            ...row,
+            categories: row.categories ? row.categories.split(",") : [],
+          }));
+          resolve(activities);
+        }
+      }
+    );
   });
 }
 
@@ -103,9 +133,9 @@ export function getActivitiesByRegion(region) {
         if (err) reject(err);
         else {
           // Convert comma-separated categories to array
-          const activities = rows.map(row => ({
+          const activities = rows.map((row) => ({
             ...row,
-            categories: row.categories ? row.categories.split(',') : [],
+            categories: row.categories ? row.categories.split(",") : [],
           }));
           resolve(activities);
         }
@@ -129,7 +159,7 @@ export function getActivityById(id) {
         if (err) reject(err);
         else {
           if (row) {
-            row.categories = row.categories ? row.categories.split(',') : [];
+            row.categories = row.categories ? row.categories.split(",") : [];
           }
           resolve(row);
         }
@@ -142,7 +172,7 @@ export function getActivityById(id) {
 export function getCachedActivityDetails(activityId) {
   return new Promise((resolve, reject) => {
     db.get(
-      'SELECT * FROM activity_details_cache WHERE activity_id = ?',
+      "SELECT * FROM activity_details_cache WHERE activity_id = ?",
       [activityId],
       (err, row) => {
         if (err) reject(err);
@@ -155,13 +185,26 @@ export function getCachedActivityDetails(activityId) {
 // Cache activity details
 export function cacheActivityDetails(activityId, details) {
   return new Promise((resolve, reject) => {
-    const { hours_json, rating, review_count, is_open, nearby_activities_json } = details;
-    
+    const {
+      hours_json,
+      rating,
+      review_count,
+      is_open,
+      nearby_activities_json,
+    } = details;
+
     db.run(
       `INSERT OR REPLACE INTO activity_details_cache 
        (activity_id, hours_json, rating, review_count, is_open, nearby_activities_json, last_fetched)
        VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`,
-      [activityId, hours_json, rating, review_count, is_open, nearby_activities_json],
+      [
+        activityId,
+        hours_json,
+        rating,
+        review_count,
+        is_open,
+        nearby_activities_json,
+      ],
       (err) => {
         if (err) reject(err);
         else resolve();
@@ -180,4 +223,3 @@ export function isCacheStale(lastFetched) {
 }
 
 export default db;
-

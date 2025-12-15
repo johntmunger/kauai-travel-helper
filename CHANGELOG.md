@@ -5,6 +5,39 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-12-13
+
+### 🔍 Search Feature Release
+
+Added full search functionality across all activities and regions.
+
+### Added
+
+- **Search Functionality** - Real-time search across all 39 activities
+- **Cross-Region Search** - Search returns results from all regions with context badges
+- **Plural Support** - Handles plurals (restaurants, beaches, bars)
+- **Region Search** - Search by region name (East, North, South, West)
+- **Smart Results Display** - "Found X" badge replaces filters during search
+- **Empty State Handling** - Polished no-results card with clear search button
+- **Responsive Placeholders** - Detailed examples on desktop, simple on mobile
+- **GET /api/activities/all** - New backend endpoint for search
+
+### Search Capabilities
+
+- Search by activity name
+- Search by description keywords
+- Search by category (Restaurant, Outdoor, etc.)
+- Search by location (Hanalei, Poipu, Koloa)
+- Search by region (East, North, South, West)
+- Combined with category filters
+- Real-time results as you type
+
+### Changed
+
+- Filter tabs hide during search mode
+- Search bar always stays inline (responsive sizing)
+- All button subtle on mobile portrait
+
 ## [1.2.0] - 2025-12-13
 
 ### ✨ Mobile UX & Contact Features

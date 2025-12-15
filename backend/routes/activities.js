@@ -1,32 +1,54 @@
-import express from 'express';
+import express from "express";
 import {
   getActivityById,
+  getAllActivities,
   getCachedActivityDetails,
   cacheActivityDetails,
   isCacheStale,
-} from '../services/database.js';
-import { getPlaceDetails, searchPlace, findNearbyPlaces } from '../services/googlePlaces.js';
-import { getBusinessDetails, searchBusiness } from '../services/yelpFusion.js';
+} from "../services/database.js";
+import {
+  getPlaceDetails,
+  searchPlace,
+  findNearbyPlaces,
+} from "../services/googlePlaces.js";
+import { getBusinessDetails, searchBusiness } from "../services/yelpFusion.js";
 
 const router = express.Router();
 
+// GET /api/activities/all - Get all activities (for search)
+router.get("/all", async (req, res) => {
+  try {
+    const activities = await getAllActivities();
+    res.json({
+      success: true,
+      data: activities,
+    });
+  } catch (error) {
+    console.error("Error fetching all activities:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to fetch activities",
+    });
+  }
+});
+
 // GET /api/activities/:id - Get activity details with caching
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     // Get basic activity info
     const activity = await getActivityById(id);
     if (!activity) {
       return res.status(404).json({
         success: false,
-        error: 'Activity not found',
+        error: "Activity not found",
       });
     }
 
     // Check for cached details
     const cachedDetails = await getCachedActivityDetails(id);
-    
+
     // If cache exists and is fresh, return it
     if (cachedDetails && !isCacheStale(cachedDetails.last_fetched)) {
       return res.json({
@@ -34,12 +56,14 @@ router.get('/:id', async (req, res) => {
         data: {
           ...activity,
           details: {
-            hours: cachedDetails.hours_json ? JSON.parse(cachedDetails.hours_json) : null,
+            hours: cachedDetails.hours_json
+              ? JSON.parse(cachedDetails.hours_json)
+              : null,
             rating: cachedDetails.rating,
             review_count: cachedDetails.review_count,
             is_open: cachedDetails.is_open === 1,
-            nearby_activities: cachedDetails.nearby_activities_json 
-              ? JSON.parse(cachedDetails.nearby_activities_json) 
+            nearby_activities: cachedDetails.nearby_activities_json
+              ? JSON.parse(cachedDetails.nearby_activities_json)
               : [],
           },
           cached: true,
@@ -61,10 +85,13 @@ router.get('/:id', async (req, res) => {
       const googleDetails = await getPlaceDetails(placeId);
       if (googleDetails) {
         details = googleDetails;
-        
+
         // Get nearby places
         if (activity.latitude && activity.longitude) {
-          nearbyActivities = await findNearbyPlaces(activity.latitude, activity.longitude);
+          nearbyActivities = await findNearbyPlaces(
+            activity.latitude,
+            activity.longitude
+          );
         }
       }
     }
@@ -100,33 +127,35 @@ router.get('/:id', async (req, res) => {
       success: true,
       data: {
         ...activity,
-        details: details ? {
-          ...details,
-          nearby_activities: nearbyActivities,
-        } : null,
+        details: details
+          ? {
+              ...details,
+              nearby_activities: nearbyActivities,
+            }
+          : null,
         cached: false,
       },
     });
   } catch (error) {
-    console.error('Error fetching activity:', error);
+    console.error("Error fetching activity:", error);
     res.status(500).json({
       success: false,
-      error: 'Failed to fetch activity',
+      error: "Failed to fetch activity",
     });
   }
 });
 
 // GET /api/activities/:id/live-status - Force refresh from APIs
-router.get('/:id/live-status', async (req, res) => {
+router.get("/:id/live-status", async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     // Get basic activity info
     const activity = await getActivityById(id);
     if (!activity) {
       return res.status(404).json({
         success: false,
-        error: 'Activity not found',
+        error: "Activity not found",
       });
     }
 
@@ -143,10 +172,13 @@ router.get('/:id/live-status', async (req, res) => {
       const googleDetails = await getPlaceDetails(placeId);
       if (googleDetails) {
         details = googleDetails;
-        
+
         // Get nearby places
         if (activity.latitude && activity.longitude) {
-          nearbyActivities = await findNearbyPlaces(activity.latitude, activity.longitude);
+          nearbyActivities = await findNearbyPlaces(
+            activity.latitude,
+            activity.longitude
+          );
         }
       }
     }
@@ -187,13 +219,12 @@ router.get('/:id/live-status', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Error fetching live status:', error);
+    console.error("Error fetching live status:", error);
     res.status(500).json({
       success: false,
-      error: 'Failed to fetch live status',
+      error: "Failed to fetch live status",
     });
   }
 });
 
 export default router;
-
