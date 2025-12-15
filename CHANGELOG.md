@@ -5,24 +5,38 @@ All notable changes to the Kauai Travel Helper project will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.1] - 2025-12-13
+## [1.2.0] - 2025-12-13
 
-### 🐛 Bug Fix Release
+### ✨ Mobile UX & Contact Features
 
-Critical production fixes for routing and deployment.
-
-### Fixed
-
-- **SPA Routing on Render** - Added Express server to properly handle all routes
-- **404 Errors** - All routes now work correctly on mobile and desktop
-- **Production Deployment** - Added \_redirects file for static hosting
-- **CORS Configuration** - Ensured proper environment variable setup
+Enhanced mobile experience and added comprehensive contact information.
 
 ### Added
 
-- Express server for frontend (handles SPA routing)
+- **Contact Information** - Phone numbers, website links, and directions from Google Places API
+- **Clickable Nearby Places** - Click any nearby place to open in Google Maps
+- **Region Badges on Cards** - Show region context on every activity card
+- **3 New Activities** - Hanalei Pier, Secret Falls Kayak, Shops at Kukui'ula, Shipwreck Beach, JoJo's Shave Ice
+- Express server for frontend (proper SPA routing)
 - render.yaml for infrastructure as code
-- \_redirects file for fallback routing
+
+### Changed
+
+- Mobile portrait shows only "All" filter button (cleaner interface)
+- "All" button subtle on mobile (semi-transparent)
+- Navigation reordered: South Shore → West → East → North
+- South Shore as default landing page
+- Improved back button visibility with subtle border
+- Region badges match detail page styling (lighter gray)
+- Total activities increased to 39
+
+### Fixed
+
+- 404 errors in production (Express server solution)
+- SPA routing on Render static hosting
+- CORS configuration for API access
+- Secret Falls image updated to show kayaking
+- Various image quality improvements
 
 ## [1.1.0] - 2025-12-13
 
