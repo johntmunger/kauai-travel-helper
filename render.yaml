@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: kauai-backend
+    runtime: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+
+  - type: web
+    name: kauai-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
