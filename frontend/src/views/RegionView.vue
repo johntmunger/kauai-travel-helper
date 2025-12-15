@@ -32,28 +32,58 @@
 
       <!-- Activities Grid -->
       <div v-else>
-        <!-- Category Filter -->
-        <div class="mb-6 flex flex-wrap gap-2">
-          <button
-            @click="selectedCategory = null"
-            class="px-4 py-2 rounded-lg font-medium transition-colors shadow-sm sm:shadow-sm bg-white/70 sm:bg-blue-600 text-gray-700 sm:text-white border border-gray-200 sm:border-0"
-          >
-            All ({{ activities.length }})
-          </button>
-          <!-- Hide category buttons on portrait mobile, show on landscape and larger -->
-          <button
-            v-for="category in categories"
-            :key="category"
-            @click="selectedCategory = category"
-            class="hidden sm:inline-flex px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
-            :class="
-              selectedCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
-            "
-          >
-            {{ category }} ({{ getCountByCategory(category) }})
-          </button>
+        <!-- Filter and Search Bar -->
+        <div class="mb-6 flex items-center justify-between gap-2">
+          <!-- Category Filter -->
+          <div class="flex flex-wrap gap-2 flex-shrink-0">
+            <button
+              @click="selectedCategory = null"
+              class="px-4 py-2 text-sm rounded-lg font-medium transition-colors shadow-sm sm:shadow-sm bg-white/70 sm:bg-blue-600 text-gray-700 sm:text-white border border-gray-200 sm:border-0"
+            >
+              All ({{ activities.length }})
+            </button>
+            <!-- Hide category buttons on portrait mobile, show on landscape and larger -->
+            <button
+              v-for="category in categories"
+              :key="category"
+              @click="selectedCategory = category"
+              class="hidden sm:inline-flex px-4 py-2 text-sm rounded-lg font-medium transition-colors shadow-sm"
+              :class="
+                selectedCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-100'
+              "
+            >
+              {{ category }} ({{ getCountByCategory(category) }})
+            </button>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="relative flex-1 min-w-0 max-w-xs ml-auto">
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full pl-9 pr-3 py-2 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              disabled
+            />
+          </div>
         </div>
 
         <!-- Activity Cards -->
