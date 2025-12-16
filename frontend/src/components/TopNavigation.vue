@@ -5,7 +5,7 @@
         <!-- Logo/Title -->
         <router-link
           to="/south"
-          class="flex-shrink-0 flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
+          class="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
         >
           <!-- Pineapple Icon -->
           <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none">

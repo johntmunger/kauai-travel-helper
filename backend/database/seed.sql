@@ -12,6 +12,7 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('The Shops at Kukui''ula', '2829 Ala Kalanikaumaka Rd, Koloa, Hawaii 96756', 'South', 'Upscale outdoor shopping center featuring boutiques, galleries, restaurants, and weekly farmers market. Beautiful open-air setting perfect for leisurely browsing and dining.', 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400', 21.8825, -159.4663),
 ('Shipwreck Beach', 'Poipu, HI 96756', 'South', 'Dramatic beach known for powerful waves and scenic coastal cliffs. Popular spot for experienced surfers and photographers seeking stunning sunsets and rugged coastline views.', 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400', 21.8850, -159.4500),
 ('Koloa Fish Market', '3390 Poipu Road, Koloa, HI 96756', 'South', 'Fresh local fish, poke bowls, and plate lunches. Local favorite for quality seafood and generous portions at great prices. Perfect for a quick, delicious meal.', 'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400', 21.8894, -159.4694),
+('Snorkel Bob''s Koloa', '3236 Poipu Rd, Koloa, HI 96756', 'South', 'Full-service snorkel and beach gear rental shop. Quality equipment, expert advice, and convenient location for Poipu beach adventures.', 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400', 21.8850, -159.4660),
 
 -- North Region Activities  
 ('Hanalei Bay', 'Weke Rd, Hanalei, HI 96714', 'North', 'Iconic crescent-shaped bay with pristine white sand and turquoise water. Perfect for swimming, surfing, and paddleboarding with mountain backdrop.', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', 22.2071, -159.5006),
@@ -36,6 +37,8 @@ INSERT INTO activities (name, address, region, short_description, thumbnail_url,
 ('The Fish Express', '3-3343 Kuhio Highway #7, Lihue, HI', 'East', 'Popular local fish market offering fresh poke, sushi rolls, and fish plates. Great selection of daily catch with island-style preparations at affordable prices.', 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400', 21.9742, -159.3556),
 ('The Kauai Community Market', '3-1901 Kaumualii Hwy, Lihue, HI 96766', 'East', 'Vibrant Saturday farmers market featuring local produce, crafts, food vendors, and live music. Experience authentic island culture and support local farmers and artisans.', 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400', 21.9742, -159.3556),
 ('Secret Falls Kayak and Hike', '4-484 Kuhio Hwy, Kapaʻa, HI 96746', 'East', 'Adventurous kayak up the Wailua River followed by a jungle hike to a stunning hidden waterfall. Tours depart from Coconut Marketplace offering this unforgettable 4-hour experience.', 'https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=400', 22.0507, -159.3316),
+('Pono Market', '4-1300 Kuhio Hwy, Kapaʻa, HI 96746', 'East', 'Local favorite fish market and deli offering fresh poke, plate lunches, and Hawaiian specialties. Authentic island-style preparations at reasonable prices.', 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400', 22.0750, -159.3400),
+('Lava Lava Beach Club', 'Kapaʻa, HI 96746', 'East', 'Beachfront restaurant and bar with island cuisine and tropical cocktails. Oceanfront dining with stunning views, casual atmosphere perfect for lunch or sunset dinner.', 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400', 22.0750, -159.3400),
 
 -- West Region Activities
 ('Waimea Canyon', 'Waimea Canyon Dr, Waimea, HI 96796', 'West', 'The "Grand Canyon of the Pacific" - stunning 3,000-foot deep canyon with red and green cliffs. Multiple lookout points along scenic drive.', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', 22.0818, -159.6579),
@@ -92,4 +95,8 @@ UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Secr
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Hanalei Pier' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'The Shops at Kukui''ula' AND c.name = 'Outdoor'
 UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Shipwreck Beach' AND c.name = 'Outdoor'
-UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'JoJo''s Shave Ice' AND c.name = 'Restaurant';
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'JoJo''s Shave Ice' AND c.name = 'Restaurant'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Snorkel Bob''s Koloa' AND c.name = 'Outdoor'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Pono Market' AND c.name = 'Fish Market'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Pono Market' AND c.name = 'Restaurant'
+UNION ALL SELECT a.id, c.id FROM activities a, categories c WHERE a.name = 'Lava Lava Beach Club' AND c.name = 'Restaurant';
