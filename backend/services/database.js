@@ -222,4 +222,42 @@ export function isCacheStale(lastFetched) {
   return hoursDiff > 24;
 }
 
+// Force reseed the database
+export function reseedDatabase() {
+  return new Promise((resolve, reject) => {
+    const seedPath = join(__dirname, "../database/seed.sql");
+
+    db.serialize(() => {
+      // Clear existing data
+      db.run("DELETE FROM activity_categories", (err) => {
+        if (err) {
+          console.error("Error clearing activity_categories:", err);
+          reject(err);
+          return;
+        }
+
+        db.run("DELETE FROM activities", (err) => {
+          if (err) {
+            console.error("Error clearing activities:", err);
+            reject(err);
+            return;
+          }
+
+          // Re-insert seed data
+          const seed = readFileSync(seedPath, "utf8");
+          db.exec(seed, (err) => {
+            if (err) {
+              console.error("Error reseeding database:", err);
+              reject(err);
+              return;
+            }
+            console.log("Database reseeded successfully");
+            resolve();
+          });
+        });
+      });
+    });
+  });
+}
+
 export default db;

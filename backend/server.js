@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { initializeDatabase } from "./services/database.js";
+import { initializeDatabase, reseedDatabase } from "./services/database.js";
 import regionsRouter from "./routes/regions.js";
 import activitiesRouter from "./routes/activities.js";
 
@@ -32,12 +32,30 @@ app.get("/api", (req, res) => {
       regionActivities: "/api/regions/:region/activities",
       activityDetails: "/api/activities/:id",
       activityLiveStatus: "/api/activities/:id/live-status",
+      reseed: "POST /api/reseed",
     },
   });
 });
 
 app.use("/api/regions", regionsRouter);
 app.use("/api/activities", activitiesRouter);
+
+// Reseed endpoint
+app.post("/api/reseed", async (req, res) => {
+  try {
+    await reseedDatabase();
+    res.json({
+      success: true,
+      message: "Database reseeded successfully",
+    });
+  } catch (error) {
+    console.error("Error reseeding database:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to reseed database",
+    });
+  }
+});
 
 // Error handling
 app.use((err, req, res, next) => {

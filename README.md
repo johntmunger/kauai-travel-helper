@@ -8,7 +8,9 @@ A modern single-page application built with Vue 3 and Node.js/Express to help yo
 
 ## 🌐 Live Demo
 
-**Frontend:** [https://kauai-guide.onrender.com](https://kauai-guide.onrender.com/south)  
+**Frontend Service:** [https://kauai-guide.onrender.com](https://kauai-guide.onrender.com/south)  
+**Frontend Static:** [https://kauai-travel-helper.onrender.com](https://kauai-travel-helper.onrender.com/south)
+
 **API:** [https://kauai-backend.onrender.com/api](https://kauai-backend.onrender.com/api)
 
 > **Note:** Replace with your actual Render.com URLs after deployment
@@ -189,6 +191,37 @@ The frontend will start on `http://localhost:5173`
 
 Open your browser and navigate to: **http://localhost:5173**
 
+## Database Management
+
+### 🔄 Reseed Database (Update Activity Data)
+
+When you update the `backend/database/seed.sql` file, you can easily reload the data:
+
+**Option 1: Using npm script (simplest)**
+
+With the server running, open a new terminal:
+
+```bash
+npm run reseed
+```
+
+**Option 2: Using curl**
+
+```bash
+curl -X POST http://localhost:3000/api/reseed
+```
+
+**Option 3: Manual method**
+
+Stop the server, delete the database file, and restart:
+
+```bash
+rm backend/database/kauai.db
+npm run dev
+```
+
+> **Note:** The reseed command will clear all activities and reload them from the seed.sql file. Make sure your server is running before using the reseed command.
+
 ## API Endpoints
 
 ### Backend API
@@ -198,6 +231,7 @@ Open your browser and navigate to: **http://localhost:5173**
 - `GET /api/regions/:region/activities` - Get activities for a region (North, East, South, West)
 - `GET /api/activities/:id` - Get activity details (cached)
 - `GET /api/activities/:id/live-status` - Refresh live data from APIs
+- `POST /api/reseed` - Reload database from seed.sql file
 
 ## Pre-seeded Activities
 
