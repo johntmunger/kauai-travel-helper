@@ -80,6 +80,13 @@ async function startServer() {
     await initializeDatabase();
     console.log("✓ Database initialized");
 
+    // Auto-reseed in development mode
+    if (process.env.AUTO_RESEED === "true") {
+      console.log("🔄 Auto-reseeding database in development mode...");
+      await reseedDatabase();
+      console.log("✓ Database reseeded with latest data");
+    }
+
     app.listen(PORT, () => {
       console.log(`✓ Server running on http://localhost:${PORT}`);
       console.log(`✓ API available at http://localhost:${PORT}/api`);

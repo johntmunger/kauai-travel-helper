@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "AUTO_RESEED=true node --watch server.js"
   },
   "keywords": [
     "kauai",

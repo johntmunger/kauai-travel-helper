@@ -143,6 +143,7 @@ Or manually create `backend/.env` with:
 GOOGLE_PLACES_API_KEY=your_google_api_key_here
 YELP_API_KEY=your_yelp_api_key_here
 PORT=3000
+# AUTO_RESEED=true  # Automatically set in dev mode, no need to add
 ```
 
 **Note**: The app will work without API keys, but live data features (hours, ratings, reviews) won't be available.
@@ -158,6 +159,8 @@ npm run dev
 ```
 
 This will start both the backend and frontend servers simultaneously with colored output!
+
+> **Note:** In development mode, the database automatically reseeds with the latest data from `seed.sql` on every restart, so your changes are always reflected immediately.
 
 ### Alternative: Start Servers Separately
 
@@ -193,13 +196,15 @@ Open your browser and navigate to: **http://localhost:5173**
 
 ## Database Management
 
-### 🔄 Reseed Database (Update Activity Data)
+### 🔄 Auto-Reseed in Development
 
-When you update the `backend/database/seed.sql` file, you can easily reload the data:
+The database **automatically reseeds** every time you start the dev server with `npm run dev`. This means any changes to `backend/database/seed.sql` are instantly reflected when you restart the server - no manual steps needed!
 
-**Option 1: Using npm script (simplest)**
+### Manual Reseed (Production/Running Server)
 
-With the server running, open a new terminal:
+If you need to reseed while the server is already running:
+
+**Option 1: Using npm script**
 
 ```bash
 npm run reseed
@@ -211,16 +216,9 @@ npm run reseed
 curl -X POST http://localhost:3000/api/reseed
 ```
 
-**Option 3: Manual method**
+**Option 3: Restart dev server (recommended)**
 
-Stop the server, delete the database file, and restart:
-
-```bash
-rm backend/database/kauai.db
-npm run dev
-```
-
-> **Note:** The reseed command will clear all activities and reload them from the seed.sql file. Make sure your server is running before using the reseed command.
+Just stop and restart `npm run dev` - it will auto-reseed!
 
 ## API Endpoints
 
