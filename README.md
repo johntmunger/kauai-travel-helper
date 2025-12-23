@@ -220,6 +220,47 @@ curl -X POST http://localhost:3000/api/reseed
 
 Just stop and restart `npm run dev` - it will auto-reseed!
 
+### 🌐 Sync from Live Production
+
+Sync your local database with the live production environment to get the latest activities and data.
+
+**Quick Sync:**
+
+```bash
+cd backend
+npm run sync:live
+```
+
+This will:
+
+1. ✅ Create a backup of your current local database
+2. ✅ Fetch all activities from production API
+3. ✅ Reseed your local database with live data
+
+**Available Commands:**
+
+```bash
+# Sync with backup (recommended)
+npm run sync:live
+
+# Sync without creating backup
+npm run sync:live:no-backup
+
+# List all database backups
+npm run db:list-backups
+
+# Restore from a backup
+npm run db:restore [backup-filename]
+```
+
+**When to use:**
+
+- Your local database is out of sync with production
+- You want to test with real production data locally
+- Production has been updated with new activities
+
+**📚 For detailed documentation, see:** [`backend/scripts/README.md`](backend/scripts/README.md)
+
 ## API Endpoints
 
 ### Backend API

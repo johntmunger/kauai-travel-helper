@@ -10,7 +10,9 @@ backend/node_modules/
 
 # Database
 backend/database/kauai.db
+backend/database/backups/*.db
 *.db
+!backend/database/backups/.gitkeep
 
 # Build outputs
 frontend/dist/

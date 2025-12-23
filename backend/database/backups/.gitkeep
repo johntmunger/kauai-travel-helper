@@ -1,0 +1,35 @@
+# Database Backups
+
+This directory contains backup copies of the kauai.db database file.
+
+Backups are automatically created by:
+- `npm run sync:live` - Before syncing from production
+- `npm run db:restore` - Before restoring a backup (safety backup)
+
+## Backup Naming
+
+Backups are named with timestamps:
+```
+kauai-backup-[unix-timestamp].db
+pre-restore-[unix-timestamp].db
+```
+
+## Managing Backups
+
+To list backups:
+```bash
+npm run db:list-backups
+```
+
+To restore a backup:
+```bash
+npm run db:restore [backup-filename]
+```
+
+## Cleanup
+
+Old backups can be safely deleted to save disk space.
+It's recommended to keep at least 1-2 recent backups.
+
+See `backend/scripts/README.md` for more information.
+

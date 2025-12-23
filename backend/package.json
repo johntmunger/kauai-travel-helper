@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "AUTO_RESEED=true node --watch server.js"
+    "dev": "AUTO_RESEED=true node --watch server.js",
+    "sync:live": "node scripts/sync-from-live.js",
+    "sync:live:no-backup": "node scripts/sync-from-live.js --no-backup",
+    "db:restore": "node scripts/restore-backup.js",
+    "db:list-backups": "node scripts/restore-backup.js"
   },
   "keywords": [
     "kauai",
